@@ -48,6 +48,20 @@ class Movie{
     }
 };
 
+void print() const {
+        cout << "Movie Title: " << title << endl;
+        Node* current = head;
+        if (!current) {
+            cout << "  (No reviews yet)" << endl;
+            return;
+        }else{
+            while (current) {
+                cout << "  Rating: " << current->rating << " - Comment: " << current->comment << endl;
+                current = current->next;
+            }
+        }
+    }
+
 int main() {
 
     Node *head = nullptr;
