@@ -1,0 +1,101 @@
+// COMSC-210 | Lab  19| Tianyi Cao 
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+struct Node {
+    float rating;
+    string comment;
+    Node* next;
+};
+
+// Function prototypes
+void output(Node *);
+
+int main() {
+
+    Node *head = nullptr;
+    int choice_mode;
+    char again = 'y';
+
+    int choice;
+
+    cout << "Which linked list method should we use?" << endl;
+    cout << "[1] New nodes are added at the head of the linked list" << endl;
+    cout << "[2] New nodes are added at the tail of the linked list" << endl;
+    cout << "Choice: ";
+    cin >> choice;
+    
+    while (again == 'y' || again == 'Y') {
+        Node *newVal = new Node;
+        
+        cout << "Enter review rating 0-5: ";
+        cin >> newVal->rating;
+        cin.ignore(); 
+
+        cout << "Enter review comments: ";
+        getline(cin, newVal->comment);
+
+        newVal->next = nullptr;
+    
+
+        // Add the new node to the linked list based on the user's choice
+        if (choice_mode == 1) {
+            if (!head) {
+                head = newVal;
+            } else {
+                newVal->next = head;
+                head = newVal;
+            }
+        } else {
+            if (!head) {
+                head = newVal;
+            } else {
+                Node *current = head;
+                while (current->next) { 
+                    current = current->next;
+                }
+                current->next = newVal;
+            }
+        }
+    }
+        output(head);
+
+    // Clean up memory
+    Node *current = head;
+    while (current) {
+        head = current->next;
+        delete current;
+        current = head;
+    }
+      head = nullptr;
+        cout << "Enter another review? Y/N: ";
+        cin >> again;
+
+        return 0;
+    }
+
+
+void output(Node *hd){
+    if(!hd) {
+        cout << "Empty list" << endl;
+        return;
+    }
+    cout << "Outputting all reviews:" << endl;
+    int count = 1;
+    float sum = 0;
+    Node *current = hd;
+    
+    while (current) {
+        cout << " > Review #" << count++ << ": " << current->rating << ": " << current->comment << endl;
+        sum += current->rating;
+        current = current->next;
+    }
+
+    // Calculate and output the average rating, excluding the first review
+    if (count > 1) {
+        cout << " > Average: " << fixed << setprecision(5) << (sum / (count - 1)) << endl;
+    }
+
+}
