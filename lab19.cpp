@@ -34,6 +34,18 @@ class Movie{
         newNode->next = head;
      
     }
+
+    ~Movie() {
+        if (head) {
+            Node* current = head;
+            while (current) {
+                Node* next = current->next;
+                delete current;
+                current = next;
+            }
+        }
+        head = nullptr;
+    }
 };
 
 int main() {
