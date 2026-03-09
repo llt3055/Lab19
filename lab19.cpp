@@ -4,6 +4,8 @@
 #include <iomanip>
 using namespace std;
 
+const int W15 = 15;
+
 struct Node {
     float rating;
     string comment;
@@ -12,6 +14,7 @@ struct Node {
 
 // Function prototypes
 void output(Node *);
+
 
 int main() {
 
@@ -75,27 +78,3 @@ int main() {
 
         return 0;
     }
-
-
-void output(Node *hd){
-    if(!hd) {
-        cout << "Empty list" << endl;
-        return;
-    }
-    cout << "Outputting all reviews:" << endl;
-    int count = 1;
-    float sum = 0;
-    Node *current = hd;
-    
-    while (current) {
-        cout << " > Review #" << count++ << ": " << current->rating << ": " << current->comment << endl;
-        sum += current->rating;
-        current = current->next;
-    }
-
-    // Calculate and output the average rating, excluding the first review
-    if (count > 1) {
-        cout << " > Average: " << fixed << setprecision(5) << (sum / (count - 1)) << endl;
-    }
-
-}
