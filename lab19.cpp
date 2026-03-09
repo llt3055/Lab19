@@ -26,6 +26,14 @@ class Movie{
             title = t;
             head = nullptr;
         }
+    
+        void addNode(double r, string c) {
+        Node* newNode = new Node;
+        newNode->rating = r;
+        newNode->comment = c;
+        newNode->next = head;
+     
+    }
 };
 
 int main() {
