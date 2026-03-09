@@ -12,9 +12,21 @@ struct Node {
     Node* next;
 };
 
-// Function prototypes
-void output(Node *);
+class Movie{
+    private:
+        string title;
+        Node* head;
+    public:
+        Movie(){
+            title = "Unknown";
+            head = nullptr;
+        }
 
+        Movie(string t) {
+            title = t;
+            head = nullptr;
+        }
+};
 
 int main() {
 
@@ -63,7 +75,6 @@ int main() {
             }
         }
     }
-        output(head);
 
     // Clean up memory
     Node *current = head;
