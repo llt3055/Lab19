@@ -67,49 +67,27 @@ int main() {
     Node *head = nullptr;
     ifstream fin;
     fin.open("comments.txt");
+
     if (fin.good()) {
+        vector<Movie> movies;
+        Movie m1("Inception");
+        movies.push_back(m1);
+        Movie m2("The Matrix");
+        movies.push_back(m2);
+        Movie m3("Interstellar");
+        movies.push_back(m3);
+        Movie m4("The Dark Knight");
+        movies.push_back(m4);
         string fileComment;
-
-    }
-    
-
-  
-
-
-
-    
-
-        // Add the new node to the linked list based on the user's choice
-        if (choice_mode == 1) {
-            if (!head) {
-                head = newVal;
-            } else {
-                newVal->next = head;
-                head = newVal;
-            }
-        } else {
-            if (!head) {
-                head = newVal;
-            } else {
-                Node *current = head;
-                while (current->next) { 
-                    current = current->next;
-                }
-                current->next = newVal;
-            }
+        if (getline(fin, fileComment)) {
+                    double randomRating = (rand() % 41 + 10) / 10.0;
+                    movies[i].addReview(randomRating, fileComment);
         }
+        fin.close();
+    } else {
+        cout << "File not found.\n";
     }
-
-    // Clean up memory
-    Node *current = head;
-    while (current) {
-        head = current->next;
-        delete current;
-        current = head;
-    }
-      head = nullptr;
-        cout << "Enter another review? Y/N: ";
-        cin >> again;
+    
 
         return 0;
     }
