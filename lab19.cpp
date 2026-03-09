@@ -79,11 +79,17 @@ int main() {
         Movie m4("The Dark Knight");
         movies.push_back(m4);
         string fileComment;
-        if (getline(fin, fileComment)) {
-                    double randomRating = (rand() % 41 + 10) / 10.0;
-                    movies[i].addReview(randomRating, fileComment);
+        for (int i = 0; i < movies.size(); i++) {
+            if (getline(fin, fileComment)) {
+                double randomRating = (rand() % 41 + 10) / 10.0;
+                movies[i].addReview(randomRating, fileComment);
+            }
         }
         fin.close();
+  
+        for (int i = 0; i < movies.size(); i++) {
+            movies[i].print();
+        }
     } else {
         cout << "File not found.\n";
     }
