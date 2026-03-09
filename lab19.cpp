@@ -32,7 +32,7 @@ class Movie{
         newNode->rating = r;
         newNode->comment = c;
         newNode->next = head;
-     
+        head = newNode;
     }
 
     ~Movie() {
@@ -82,7 +82,7 @@ int main() {
         for (int i = 0; i < movies.size(); i++) {
             if (getline(fin, fileComment)) {
                 double randomRating = (rand() % 41 + 10) / 10.0;
-                movies[i].addReview(randomRating, fileComment);
+                movies[i].addNode(randomRating, fileComment);
             }
         }
         fin.close();
