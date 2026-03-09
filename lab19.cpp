@@ -63,30 +63,20 @@ void print() const {
     }
 
 int main() {
-
+    srand(static_cast<unsigned int>(time(0)));
     Node *head = nullptr;
-    int choice_mode;
-    char again = 'y';
+    ifstream fin;
+    fin.open("comments.txt");
+    if (fin.good()) {
+        string fileComment;
 
-    int choice;
-
-    cout << "Which linked list method should we use?" << endl;
-    cout << "[1] New nodes are added at the head of the linked list" << endl;
-    cout << "[2] New nodes are added at the tail of the linked list" << endl;
-    cout << "Choice: ";
-    cin >> choice;
+    }
     
-    while (again == 'y' || again == 'Y') {
-        Node *newVal = new Node;
-        
-        cout << "Enter review rating 0-5: ";
-        cin >> newVal->rating;
-        cin.ignore(); 
 
-        cout << "Enter review comments: ";
-        getline(cin, newVal->comment);
+  
 
-        newVal->next = nullptr;
+
+
     
 
         // Add the new node to the linked list based on the user's choice
